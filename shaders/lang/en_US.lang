@@ -1,0 +1,111 @@
+screen.Setup=Setup
+
+#§
+
+option.ABOUT= 
+value.ABOUT.0=Hello
+value.ABOUT.1=§fhow you doin bbg
+value.ABOUT.2=§5 ;)
+value.ABOUT.3=§fanyway
+value.ABOUT.4=§fthis shader has been
+value.ABOUT.5=§fbuilt on SEUS v11
+value.ABOUT.6=§fThank you §9§o§lBruce
+value.ABOUT.7=§fwait no
+value.ABOUT.8=§e§oCody Darr
+value.ABOUT.9=§fyeah
+value.ABOUT.10=§fbut thanks §9§o§lBRUCE
+value.ABOUT.11=§fyoure cool
+value.ABOUT.12=§falright
+value.ABOUT.13=§fcool
+value.ABOUT.14=§fhmm
+value.ABOUT.15=§fwell then
+value.ABOUT.16=§4§o§lkeep goin
+
+
+
+
+option.ENABLE_SOFT_SHADOWS=Soft Shadows
+option.VARIABLE_PENUMBRA_SHADOWS=Variable Penumbra Shadows
+option.COLORED_SHADOWS=Colored Shadows
+option.PIXEL_SHADOWS=Pixel-Locked Shadows
+option.TEXTURE_RESOLUTION=Texture Resolution
+option.ATMOSPHERIC_SCATTERING=Atmospheric Scattering
+option.CREPUSCULAR_RAYS=Crepuscular Rays
+option.FORCE_WET_EFFECT=Force Wet Effect
+option.HQ_VOLUMETRIC_CLOUDS=HQ Volumetric Clouds
+option.VOLUMETRIC_CLOUDS=Volumetric Clouds
+option.PARALLAX=Parallax Occlusion Mapping
+option.PARALLAX_SHADOW=Parallax Self-Shadows
+option.ENABLE_SSAO=SSAO
+option.GI=Global Illumination
+option.SMOOTH_CLOUDS=Smooth Clouds
+option.shadowMapResolution=Shadow Resolution
+option.shadowDistance=Shadow Distance
+option.AVERAGE_EXPOSURE=Average Exposure
+option.GI_ARTIFACT_REDUCTION=GI Artifact Reduction
+option.GI_QUALITY=GI Quality
+option.GI_RENDER_RESOLUTION=GI Resolution
+option.GI_RADIUS=GI Radius
+option.WATER_PARALLAX=Water Parallax
+option.WATER_CAUSTICS=Water Caustics
+option.ATMOSPHERIC_HAZE=Atmospheric Haze
+option.RAYLEIGH_AMOUNT=Atmospheric Density
+option.TORCHLIGHT_BRIGHTNESS=Torchlight Brightness
+option.MOTION_BLUR=Motion Blur
+option.TONEMAP_STRENGTH=Tonemap Curve
+option.BRIGHTNESS_LEVEL=Exposure Multiplier
+option.BLOOM_AMOUNT=Bloom Strength
+option.WAVE_HEIGHT_MEASURE=Wave Height
+option.WAVE_HEIGHT=Wave Height
+option.MOTION_BLUR_AMOUNT=Motion Blur Strength
+option.CLOUD_THICKNESS=Cloud Thickness
+option.CLOUD_HEIGHT=Cloud Height
+option.volumetric_light_intensity=Volumetric Light Intensity
+option.MOTION_BLUR= Motion Blur
+option.MOTION_BLUR_AMOUNT=Motion Blur Intensity
+option.ACID=Acid
+option.WAVE_HEIGHT_MEASURE=Wave Height
+option.ANIMATION_SPEED_AMOUNT=Animation Speed
+option.WAVING_GRASS=Waving Grass
+option.WAVING_WHEAT=Waving Wheat
+option.WAVING_LEAVES=Waving Leaves
+option.WAVING_VINES=Waving Vines
+option.WAVING_HAY=Waving Hay
+option.WAVING_COBWEB=Waving Cobwebs
+option.WAVING_TALLGRASS= Waving Tallgrass
+option.WAVING_FIRE=Waving Fire
+option.WAVING_CARROT=WAving Carrots
+option.WAVING_BEETROOT_SEEDS=Waving Beetroots
+option.WAVING_POTATOES=Waving Potatoes
+option.WAVING_DEAD_BUSH=Waving Dead Bushes
+option.WAVING_MELON=Waving Melons
+option.WAVING_LILYPAD=Waving Lilypads
+option.WAVING_SUGARCANE=Waving Sugarcane
+
+
+
+
+profile.LOW=Low
+profile.MEDIUM=Medium
+profile.HIGH=High
+profile.ULTRA=Ultra
+profile.EXTREME=Extreme
+
+
+
+screen.ATMOSPHERICS=Atmospherics Options
+screen.LIGHTING=Lighting Options
+screen.SURFACE=Surface Options
+screen.GIADVANCED=Advanced GI Settings
+screen.ATMOSPHERE=Atmosphere Options
+screen.LIGHTSHADOWS=Lights and Shadow Options
+screen.SCREENFX=ScreenFX
+screen.WAVING=Waving Terrain
+screen.CLOUDS=Cloud Options
+screen.TEXTURE=Texture Options
+screen.SHADOWS=Shadow Options
+screen.WATER=Water Options
+screen.TERRAIN=Terrain Deformation
+screen.ADVANCED_WATER=Advanced Water Options
+screen.ADVANCED=Advanced Options
+screen.ADVANCED_LIGHTING=Advanced Lighting Options
