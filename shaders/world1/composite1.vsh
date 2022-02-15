@@ -138,9 +138,9 @@ void main() {
 
 
 
-	sunrise_amb = vec3(0.19f, 0.35f, 0.7f) * 0.15f;
-	noon_amb    = vec3(0.15f, 0.29f, 0.99f);
-	midnight_amb = vec3(0.005f, 0.01f, 0.02f) * 0.025f;
+	sunrise_amb = vec3(2f, 1f, 4.0f) * 0.15f;
+	noon_amb    = vec3(2f, 1f, 4.0f);
+	midnight_amb = vec3(2f, 1f, 4.0f) * 0.0009f;
 	
 	colorSkylight = sunrise_amb * timeSunriseSunset  +  noon_amb * timeNoon  +  midnight_amb * timeMidnight;
 
