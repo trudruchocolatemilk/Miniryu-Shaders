@@ -1,8 +1,9 @@
 #version 120
 
 #define SHADOW_MAP_BIAS 0.90
-#define ACID
-#define ANIMATION_SPEED_AMOUNT 1.0 // [0.0 0.25 0.5 0.75 1.0 1.25 1.5 2.0 3.0]
+//#define ACID
+#define ANIMATION_SPEED_AMOUNT 0.75 // [0.0 0.0025 0.25 0.5 0.75 1.0 1.25 1.5 2.0 3.0]
+#define FRAME_TIME frameTimeCounter * ANIMATION_SPEED_AMOUNT
 
 
 varying vec4 texcoord;
@@ -278,14 +279,14 @@ void main() {
 		vec2 angle 		= vec2(0.0f);
 
 		vec3 pn0 = position.xyz;
-			 pn0.x -= frameTimeCounter / 3.0f;
+			 pn0.x -= FRAME_TIME / 3.0f;
 
 		vec3 stoch = BicubicTexture(noisetex, pn0.xz / 64.0f).xyz;
 		vec3 stochLarge = BicubicTexture(noisetex, position.xz / (64.0f * 6.0f)).xyz;
 
 		vec3 pn = position.xyz;
 			 pn.x *= 2.0f;
-			 pn.x -= frameTimeCounter * 15.0f;
+			 pn.x -= FRAME_TIME * 15.0f;
 			 pn.z *= 8.0f;
 
 		vec3 stochLargeMoving = BicubicTexture(noisetex, pn.xz / (64.0f * 10.0f)).xyz;
@@ -331,11 +332,11 @@ void main() {
 		float windStrengthCrossfade = clamp(windStrength * 2.0f - 1.0f, 0.0f, 1.0f);
 		float lightWindFade = clamp(windStrength * 2.0f, 0.2f, 1.0f);
 
-		angleLight.x += sin(frameTimeCounter * lightAxialFrequency 		- p.x * lightAxialWaveLocalization		+ stoch.x * lightAxialRandomization) 	* lightAxialAmplitude 		+ lightAxialOffset;	
-		angleLight.y += sin(frameTimeCounter * lightLateralFrequency 	- p.x * lightLateralWaveLocalization 	+ stoch.x * lightLateralRandomization) 	* lightLateralAmplitude  	+ lightLateralOffset;
+		angleLight.x += sin(FRAME_TIME * lightAxialFrequency 		- p.x * lightAxialWaveLocalization		+ stoch.x * lightAxialRandomization) 	* lightAxialAmplitude 		+ lightAxialOffset;	
+		angleLight.y += sin(FRAME_TIME * lightLateralFrequency 	- p.x * lightLateralWaveLocalization 	+ stoch.x * lightLateralRandomization) 	* lightLateralAmplitude  	+ lightLateralOffset;
 
-		angleHeavy.x += sin(frameTimeCounter * heavyAxialFrequency 		- p.x * heavyAxialWaveLocalization		+ stoch.x * heavyAxialRandomization) 	* heavyAxialAmplitude 		+ heavyAxialOffset;	
-		angleHeavy.y += sin(frameTimeCounter * heavyLateralFrequency 	- p.x * heavyLateralWaveLocalization 	+ stoch.x * heavyLateralRandomization) 	* heavyLateralAmplitude  	+ heavyLateralOffset;
+		angleHeavy.x += sin(FRAME_TIME * heavyAxialFrequency 		- p.x * heavyAxialWaveLocalization		+ stoch.x * heavyAxialRandomization) 	* heavyAxialAmplitude 		+ heavyAxialOffset;	
+		angleHeavy.y += sin(FRAME_TIME * heavyLateralFrequency 	- p.x * heavyLateralWaveLocalization 	+ stoch.x * heavyLateralRandomization) 	* heavyLateralAmplitude  	+ heavyLateralOffset;
 
 		angle = mix(angleLight * lightWindFade, angleHeavy, vec2(windStrengthCrossfade));
 		angle *= 2.0f;
@@ -354,16 +355,16 @@ void main() {
 
 			  //lightWeight = max(0.0f, 1.0f - (lightWeight * 5.0f));
 		
-		float magnitude = (sin((position.y + position.x + frameTimeCounter * pi / ((28.0) * speed))) * 0.15 + 0.15) * 0.30 * lightWeight;
+		float magnitude = (sin((position.y + position.x + FRAME_TIME * pi / ((28.0) * speed))) * 0.15 + 0.15) * 0.30 * lightWeight;
 			  // magnitude *= grassWeight;
 			  magnitude *= lightWeight;
-		float d0 = sin(frameTimeCounter * pi / (112.0 * speed)) * 3.0 - 1.5;
-		float d1 = sin(frameTimeCounter * pi / (142.0 * speed)) * 3.0 - 1.5;
-		float d2 = sin(frameTimeCounter * pi / (132.0 * speed)) * 3.0 - 1.5;
-		float d3 = sin(frameTimeCounter * pi / (122.0 * speed)) * 3.0 - 1.5;
-		position.x += sin((frameTimeCounter * pi / (18.0 * speed)) + (-position.x + d0)*1.6 + (position.z + d1)*1.6) * magnitude * (1.0f + rainStrength * 1.0f);
-		position.z += sin((frameTimeCounter * pi / (17.0 * speed)) + (position.z + d2)*1.6 + (-position.x + d3)*1.6) * magnitude * (1.0f + rainStrength * 1.0f);
-		position.y += sin((frameTimeCounter * pi / (11.0 * speed)) + (position.z + d2) + (position.x + d3)) * (magnitude/2.0) * (1.0f + rainStrength * 1.0f);
+		float d0 = sin(FRAME_TIME * pi / (112.0 * speed)) * 3.0 - 1.5;
+		float d1 = sin(FRAME_TIME * pi / (142.0 * speed)) * 3.0 - 1.5;
+		float d2 = sin(FRAME_TIME * pi / (132.0 * speed)) * 3.0 - 1.5;
+		float d3 = sin(FRAME_TIME * pi / (122.0 * speed)) * 3.0 - 1.5;
+		position.x += sin((FRAME_TIME * pi / (18.0 * speed)) + (-position.x + d0)*1.6 + (position.z + d1)*1.6) * magnitude * (1.0f + rainStrength * 1.0f);
+		position.z += sin((FRAME_TIME * pi / (17.0 * speed)) + (position.z + d2)*1.6 + (-position.x + d3)*1.6) * magnitude * (1.0f + rainStrength * 1.0f);
+		position.y += sin((FRAME_TIME * pi / (11.0 * speed)) + (position.z + d2) + (position.x + d3)) * (magnitude/2.0) * (1.0f + rainStrength * 1.0f);
 		
 	}
 	
@@ -373,16 +374,16 @@ void main() {
 
 
 		
-		float magnitude = (sin((frameTimeCounter * pi / ((28.0) * speed))) * 0.05 + 0.15) * 0.075 * lightWeight;
+		float magnitude = (sin((FRAME_TIME * pi / ((28.0) * speed))) * 0.05 + 0.15) * 0.075 * lightWeight;
 			  // magnitude *= 1.0f - grassWeight;
 			  magnitude *= lightWeight;
-		float d0 = sin(frameTimeCounter * pi / (122.0 * speed)) * 3.0 - 1.5;
-		float d1 = sin(frameTimeCounter * pi / (142.0 * speed)) * 3.0 - 1.5;
-		float d2 = sin(frameTimeCounter * pi / (162.0 * speed)) * 3.0 - 1.5;
-		float d3 = sin(frameTimeCounter * pi / (112.0 * speed)) * 3.0 - 1.5;
-		position.x += sin((frameTimeCounter * pi / (13.0 * speed)) + (position.x + d0)*0.9 + (position.z + d1)*0.9) * magnitude;
-		position.z += sin((frameTimeCounter * pi / (16.0 * speed)) + (position.z + d2)*0.9 + (position.x + d3)*0.9) * magnitude;
-		position.y += sin((frameTimeCounter * pi / (15.0 * speed)) + (position.z + d2) + (position.x + d3)) * (magnitude/1.0);
+		float d0 = sin(FRAME_TIME * pi / (122.0 * speed)) * 3.0 - 1.5;
+		float d1 = sin(FRAME_TIME * pi / (142.0 * speed)) * 3.0 - 1.5;
+		float d2 = sin(FRAME_TIME * pi / (162.0 * speed)) * 3.0 - 1.5;
+		float d3 = sin(FRAME_TIME * pi / (112.0 * speed)) * 3.0 - 1.5;
+		position.x += sin((FRAME_TIME * pi / (13.0 * speed)) + (position.x + d0)*0.9 + (position.z + d1)*0.9) * magnitude;
+		position.z += sin((FRAME_TIME * pi / (16.0 * speed)) + (position.z + d2)*0.9 + (position.x + d3)*0.9) * magnitude;
+		position.y += sin((FRAME_TIME * pi / (15.0 * speed)) + (position.z + d2) + (position.x + d3)) * (magnitude/1.0);
 	}
 
 

@@ -57,10 +57,10 @@ varying vec3 vertexViewVector;
 #define WAVING_LILYPAD
 //#define WAVING_ALL 
 #define WAVING_SUGARCANE
-#define ACID 
+//#define ACID 
 
 
-#define ANIMATION_SPEED_AMOUNT 1.0 // [0.0 0.25 0.5 0.75 1.0 1.25 1.5 2.0 3.0]
+#define ANIMATION_SPEED_AMOUNT 0.75 // [0.0 0.0025 0.25 0.5 0.75 1.0 1.25 1.5 2.0 3.0]
 
 #define FRAME_TIME frameTimeCounter * ANIMATION_SPEED_AMOUNT
 
