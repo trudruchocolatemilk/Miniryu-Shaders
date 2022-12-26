@@ -27,6 +27,8 @@ Do not modify this code until you have read the LICENSE.txt contained in the roo
 #define GI_RENDER_RESOLUTION 0 // Render resolution of GI. 0 = High. 1 = Low. Set to 1 for faster but blurrier GI. [0 1]
 #define GI_RADIUS 0.75 // How far indirect light can spread. Can help to reduce artifacts with low GI samples. [0.5 0.75 1.0]
 
+#define ANIMATION_SPEED_AMOUNT 0.75 // [0.0 0.025 0.25 0.5 0.75 1.0 1.25 1.5 2.0 3.0]
+
 /////////INTERNAL VARIABLES////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////INTERNAL VARIABLES////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Do not change the name of these variables or their type. The Shaders Mod reads these lines and determines values to send to the inner-workings
@@ -898,7 +900,7 @@ float AlmostIdentity(in float x, in float m, in float n)
 
 
 float GetWaves(vec3 position) {
-	float speed = 0.75f;
+	float speed = ANIMATION_SPEED_AMOUNT;
 
   vec2 p = position.xz / 20.0f;
 

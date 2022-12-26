@@ -16,7 +16,7 @@ uniform int fogMode;
 
 float Luminance(in vec3 color)
 {
-	return dot(color.rgb, vec3(0.3333f, 0.3333f, 0.3333f));
+	return dot(color.rgb, vec3(0.2f, 0.1f, 0.4f));
 }
 
 void main() {

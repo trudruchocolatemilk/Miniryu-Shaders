@@ -1,6 +1,6 @@
 #version 120
 
-#define WAVE_HEIGHT_MEASURE 0.5 // [0.0 0.5 1.0 1.5 2.0 3.1415926 5.0]
+#define WAVE_HEIGHT_MEASURE 0.5 // [0.0 0.25 0.5 1.0 1.5 2.0 3.1415926 5.0]
 
 #define WATER_PARALLAX
 
@@ -40,7 +40,7 @@ varying float iswater;
 varying float isice;
 varying float isStainedGlass;
 
-#define ANIMATION_SPEED 0.5f
+#define ANIMATION_SPEED_AMOUNT 0.75 // [0.0 0.025 0.25 0.5 0.75 1.0 1.25 1.5 2.0 3.0]
 
 
 
@@ -48,7 +48,7 @@ varying float isStainedGlass;
 
 
 
-#define FRAME_TIME frameTimeCounter * ANIMATION_SPEED
+#define FRAME_TIME frameTimeCounter * ANIMATION_SPEED_AMOUNT
 
 vec4 cubic(float x)
 {

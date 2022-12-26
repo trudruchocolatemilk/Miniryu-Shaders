@@ -1,6 +1,6 @@
 #version 120
 
-#define ACID
+//#define ACID
 
 
 varying vec4 color;
@@ -70,6 +70,10 @@ void main() {
 	vec4 locposition = gl_ModelViewMatrix * gl_Vertex;
 	
 	distance = sqrt(locposition.x * locposition.x + locposition.y * locposition.y + locposition.z * locposition.z);
+
+	#ifdef ACID
+  		position.xyz = Acid(position.xyz);
+	#endif
 
 
 	gl_Position = gl_ProjectionMatrix * gbufferModelView * position;

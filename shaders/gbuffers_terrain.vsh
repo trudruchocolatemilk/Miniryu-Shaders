@@ -3,7 +3,7 @@
 
 #define OLD_LIGHTING_FIX		//In newest versions of the shaders mod/optifine, old lighting isn't removed properly. If OldLighting is On and this is enabled, you'll get proper results in any shaders mod/minecraft version.
 
-
+varying vec4 shadowPosition;
 varying vec4 color;
 varying vec4 texcoord;
 varying vec4 lmcoord;
@@ -57,10 +57,10 @@ varying vec3 vertexViewVector;
 #define WAVING_LILYPAD
 //#define WAVING_ALL 
 #define WAVING_SUGARCANE
-#define ACID 
+//#define ACID 
 
 
-#define ANIMATION_SPEED_AMOUNT 1.0 // [0.0 0.25 0.5 0.75 1.0 1.25 1.5 2.0 3.0]
+#define ANIMATION_SPEED_AMOUNT 0.75 // [0.0 0.025 0.25 0.5 0.75 1.0 1.25 1.5 2.0 3.0]
 
 #define FRAME_TIME frameTimeCounter * ANIMATION_SPEED_AMOUNT
 
@@ -809,14 +809,14 @@ position.xyz += cameraPosition.xyz;
 
 	position.xyz -= cameraPosition.xyz;
 
+shadowPosition = position;
+
 
 #ifdef ACID
   position.xyz = Acid(position.xyz);
 #endif
 
-//#ifdef GLOBE
- // position.xyz = Globe(position.xyz);
-//#endif
+
 
 
 

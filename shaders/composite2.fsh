@@ -77,11 +77,10 @@ varying vec3 colorBouncedSunlight;
 
 
 
+#define ANIMATION_SPEED_AMOUNT 0.75 // [0.0 0.025 0.25 0.5 0.75 1.0 1.25 1.5 2.0 3.0]
 
-#define ANIMATION_SPEED 0.75f
 
-
-#define FRAME_TIME frameTimeCounter * ANIMATION_SPEED
+#define FRAME_TIME frameTimeCounter * ANIMATION_SPEED_AMOUNT
 
 
 /////////////////////////FUNCTIONS/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1464,7 +1463,7 @@ float AlmostIdentity(in float x, in float m, in float n)
 }
 
 float GetWaves(vec3 position, float frameTimeCounter) {
-	float speed = 0.75f;
+	float speed = ANIMATION_SPEED_AMOUNT;
 
   vec2 p = position.xz / 20.0f;
 

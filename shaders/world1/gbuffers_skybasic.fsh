@@ -17,9 +17,9 @@ void main() {
 	vec3 skyColor = color.rgb * 1f;
 	float skyColorBoost = 0.0f;
 	
-		 skyColor.r = skyColor.r * (1.0f + skyColorBoost) - (skyColor.g * skyColorBoost / 2.0f) - (skyColor.b * skyColorBoost / 2.0f);
-		 skyColor.g = skyColor.g * (1.0f + skyColorBoost) - (skyColor.r * skyColorBoost / 2.0f) - (skyColor.b * skyColorBoost / 2.0f);
-		 skyColor.b = skyColor.b * (1.0f + skyColorBoost) - (skyColor.r * skyColorBoost / 2.0f) - (skyColor.g * skyColorBoost / 2.0f);
+		 skyColor.r = 0.2;
+		 skyColor.g = 0.1;
+		 skyColor.b = 0.4;
 
 		 skyColor.rgb = gl_Fog.color.rgb;
 

@@ -1,7 +1,7 @@
 #version 120
 
 #define WAVING_WATER
-#define ACID
+//#define ACID
 
 
 uniform int worldTime;

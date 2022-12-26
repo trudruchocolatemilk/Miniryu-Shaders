@@ -39,13 +39,10 @@ const float bump_distance = 78.0f;
 const float fademult = 0.1f;
 
 
-
-
-
-
 void main() {	
 
-if (texture2D(texture, texcoord.st).a == 0.0f){
+if (texture2D(texture, texcoord.st).a == 0.0f)
+{
 	//discard;
 }
 
