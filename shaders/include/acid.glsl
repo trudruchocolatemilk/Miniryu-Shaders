@@ -1,5 +1,7 @@
 #define track cameraPosition.x
 
+#define ACID_INTESITY 1.5 // [0.25 0.5 0.75 1.0 1.25 1.5 1.75 2.0 2.5 3.0 4.0 5.0]
+
 const float sunPathRotation = -40.0;
 const float pi = 3.1415926535;
 const float rad = 0.01745329;
@@ -61,7 +63,7 @@ vec3 Acid(vec3 pos) {
 
 	//om = (sin((Distance * Distance) * sin(float(time) / 131072.0) / 5000) * sin(float(time) / 400.0));
 
-	rotate(pos.yz, om / 1.5);
+	rotate(pos.yz, om / ACID_INTESITY);
 	
 
 	return pos;
