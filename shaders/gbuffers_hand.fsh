@@ -1,9 +1,6 @@
 #version 120
 
 
-
-
-
 ////////////////////////////////////////////////////ADJUSTABLE VARIABLES/////////////////////////////////////////////////////////
 
 #define NORMAL_MAP_MAX_ANGLE 0.95f   		//The higher the value, the more extreme per-pixel normal mapping (bump mapping) will be.
@@ -100,7 +97,7 @@ if (texture2D(texture, texcoord.st).a == 0.0f)
 	gl_FragData[2] = frag2;
 		
 	//specularity
-	gl_FragData[3] = vec4(spec.r + spec.b + spec.g * wetness * wetfactor, 0.0f, 0.0f, 1.0f);	
+	gl_FragData[3] = vec4(spec.r + spec.b + spec.g * wetness * wetfactor, 0.0f, 0.0f, 1.0f);
 
 	gl_FragData[4] = frag2;	
 

@@ -92,15 +92,18 @@ varying vec3 colorSkylight;
 
 /////////////////////////FUNCTIONS/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////FUNCTIONS/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-vec3 	GetTexture(in sampler2D tex, in vec2 coord) {				//Perform a texture lookup with BANDING_FIX_FACTOR compensation
+vec3 GetTexture(in sampler2D tex, in vec2 coord) //Perform a texture lookup with BANDING_FIX_FACTOR compensation
+{				
 	return pow(texture2D(tex, coord).rgb, vec3(BANDING_FIX_FACTOR + 1.2f));
 }
 
-vec3 	GetTextureLod(in sampler2D tex, in vec2 coord, in int level) {				//Perform a texture lookup with BANDING_FIX_FACTOR compensation
+vec3 GetTextureLod(in sampler2D tex, in vec2 coord, in int level) //Perform a texture lookup with BANDING_FIX_FACTOR compensation
+{				
 	return pow(texture2DLod(tex, coord, level).rgb, vec3(BANDING_FIX_FACTOR + 1.2f));
 }
 
-vec3 	GetTexture(in sampler2D tex, in vec2 coord, in int LOD) {	//Perform a texture lookup with BANDING_FIX_FACTOR compensation and lod offset
+vec3 GetTexture(in sampler2D tex, in vec2 coord, in int LOD) //Perform a texture lookup with BANDING_FIX_FACTOR compensation and lod offset
+{	
 	return pow(texture2D(tex, coord, LOD).rgb, vec3(BANDING_FIX_FACTOR));
 }
 
@@ -109,15 +112,18 @@ float GetSunlightVisibility(in vec2 coord)
 	return texture2D(gdepth, coord).g;
 }
 
-float 	GetDepth(in vec2 coord) {
+float GetDepth(in vec2 coord) 
+{
 	return texture2D(gdepthtex, coord).x;
 }
 
-float 	GetDepthLinear(in vec2 coord) {					//Function that retrieves the scene depth. 0 - 1, higher values meaning farther away
+float GetDepthLinear(in vec2 coord) //Function that retrieves the scene depth. 0 - 1, higher values meaning farther away
+{					
 	return 2.0f * near * far / (far + near - (2.0f * texture2D(gdepthtex, coord).x - 1.0f) * (far - near));
 }
 
-vec3 	GetColorTexture(in vec2 coord) {
+vec3 GetColorTexture(in vec2 coord) 
+{
 	#ifdef FINAL_ALT_COLOR_SOURCE
 	return GetTextureLod(gcolor, coord.st, 0).rgb;
 	#else
@@ -125,7 +131,8 @@ vec3 	GetColorTexture(in vec2 coord) {
 	#endif
 }
 
-float 	GetMaterialIDs(in vec2 coord) {			//Function that retrieves the texture that has all material IDs stored in it
+float GetMaterialIDs(in vec2 coord) //Function that retrieves the texture that has all material IDs stored in it
+{			
 	return texture2D(gdepth, coord).r;
 }
 
@@ -134,7 +141,7 @@ float saturate(float x)
 	return clamp(x, 0.0, 1.0);
 }
 
-vec4  	GetWorldSpacePosition(in vec2 coord) {	//Function that calculates the screen-space position of the objects in the scene using the depth texture and the texture coordinates of the full-screen quad
+vec4 GetWorldSpacePosition(in vec2 coord) {	//Function that calculates the screen-space position of the objects in the scene using the depth texture and the texture coordinates of the full-screen quad
 	float depth = GetDepth(coord);
 		  //depth += float(GetMaterialMask(coord, 5)) * 0.38f;
 	vec4 fragposition = gbufferProjectionInverse * vec4(coord.s * 2.0f - 1.0f, coord.t * 2.0f - 1.0f, 2.0f * depth - 1.0f, 1.0f);
@@ -187,32 +194,42 @@ vec4 BicubicTexture(in sampler2D tex, in vec2 coord)
     return mix( mix(sample3, sample2, sx), mix(sample1, sample0, sx), sy);
 }
 
-bool 	GetMaterialMask(in vec2 coord, in int ID) {
+bool GetMaterialMask(in vec2 coord, in int ID) 
+{
 	float	  matID = floor(GetMaterialIDs(coord) * 255.0f);
 
 	//Catch last part of sky
-	if (matID > 254.0f) {
+	if (matID > 254.0f) 
+	{
 		matID = 0.0f;
 	}
 
-	if (matID == ID) {
+	if (matID == ID) 
+	{
 		return true;
-	} else {
+	} 
+	else 
+	{
 		return false;
 	}
 }
 
-bool 	GetMaterialMask(in vec2 coord, in int ID, float matID) {
+bool GetMaterialMask(in vec2 coord, in int ID, float matID) 
+{
 	matID = floor(matID * 255.0f);
 
 	//Catch last part of sky
-	if (matID > 254.0f) {
+	if (matID > 254.0f) 
+	{
 		matID = 0.0f;
 	}
 
-	if (matID == ID) {
+	if (matID == ID) 
+	{
 		return true;
-	} else {
+	} 
+	else 
+	{
 		return false;
 	}
 }
@@ -365,7 +382,8 @@ void 	MotionBlur(inout vec3 color) {
 
 
 	bool isHand = GetMaterialMask(texcoord.st, 5);
-	velocity *= MOTION_BLUR_AMOUNT - float(isHand);
+	bool isEnchanted = GetMaterialMask(texcoord.st, 11);  // yay!!!
+	velocity *= (isHand || isEnchanted) ? 0.0 : MOTION_BLUR_AMOUNT; // I love cock -artistmeme/geamez
 
 	int samples = 0;
 
@@ -373,25 +391,21 @@ void 	MotionBlur(inout vec3 color) {
 
 	color.rgb = vec3(0.0f);
 
-	for (int i = 0; i < 2; ++i) {
+	for (int i = 0; i < 2; ++i) 
+	{
 		vec2 coord = texcoord.st + velocity * (i - 0.5);
 			 coord += vec2(dither) * 1.2f * velocity;
 
-		if (coord.x > 0.0f && coord.x < 1.0f && coord.y > 0.0f && coord.y < 1.0f) {
-
-			color += GetColorTexture(coord).rgb;
-			samples += 1;
-
-		}
+		if (coord.x > 0.0f && coord.x < 1.0f && coord.y > 0.0f && coord.y < 1.0f) 
+			{
+				color += GetColorTexture(coord).rgb;
+				samples += 1;
+			}
 	}
 
 	color.rgb /= samples;
-	
-	//MOTION_BLUR * MOTION_BLUR_AMOUNT;
-	
-	//fogDensity += 0.001 * MOTION_BLUR_AMOUNT;
 
-
+	//color.rgb = vec3(GetMaterialIDs(texcoord.st));
 }
 
 
