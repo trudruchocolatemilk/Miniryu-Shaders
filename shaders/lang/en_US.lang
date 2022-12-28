@@ -3,23 +3,23 @@ screen.Setup=Setup
 #§
 
 option.ABOUT= 
-value.ABOUT.0=Hello
-value.ABOUT.1=§fhow you doin bbg
-value.ABOUT.2=§5 ;)
-value.ABOUT.3=§fanyway
-value.ABOUT.4=§fthis shader has been
-value.ABOUT.5=§fbuilt on SEUS v11
-value.ABOUT.6=§fThank you §9§o§lBruce
-value.ABOUT.7=§fwait no
-value.ABOUT.8=§e§oCody Darr
-value.ABOUT.9=§fyeah
-value.ABOUT.10=§fbut thanks §9§o§lBRUCE
-value.ABOUT.11=§fyoure cool
-value.ABOUT.12=§falright
-value.ABOUT.13=§fcool
-value.ABOUT.14=§fhmm
-value.ABOUT.15=§fwell then
-value.ABOUT.16=§4§o§lkeep goin
+value.ABOUT.0=Miniryu Shaders
+value.ABOUT.1=§fBased on SEUS v11.0
+value.ABOUT.2=§5Created by: Sonic Ether
+value.ABOUT.3=§fSpecial Thanks to:
+value.ABOUT.4=§fRyry1002
+value.ABOUT.5=§fGian Sabia
+value.ABOUT.6=§fBruceKnowsHow (inspiration)
+value.ABOUT.7=§fPastLifePro (tutorials)
+value.ABOUT.8=§e§o
+value.ABOUT.9=§f
+value.ABOUT.10=§f
+value.ABOUT.11=§f
+value.ABOUT.12=§f
+value.ABOUT.13=§f
+value.ABOUT.14=§f
+value.ABOUT.15=§f
+value.ABOUT.16=§4§o§l
 
 
 
