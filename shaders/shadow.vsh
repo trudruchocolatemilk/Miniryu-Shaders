@@ -399,14 +399,18 @@ void main() {
 
 	//position = gbufferModelViewInverse * position;
 	position.xyz -= cameraPosition.xyz;
+
 	#ifdef ACID
   		position.xyz = Acid(position.xyz);
 	#endif
 
-
 	position = shadowModelView * position;
 	position = shadowProjection * position;
 	shadowPosition = position;
+
+	
+
+	
 
 	normal = normalize(gl_NormalMatrix * gl_Normal);
 	vec3 worldNormal = gl_Normal;

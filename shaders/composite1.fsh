@@ -51,7 +51,7 @@ Do not modify this code until you have read the LICENSE.txt contained in the roo
 #define CLOUD_THICKNESS 130.0 // [100.0 130.0 160.0 200.0 250.0 300.0]
 #define CLOUD_HEIGHT 500.0 // [400.0 450.0 500.0 550.0 600.0 700.0]
 #define CLOUD_RES 1.0 // [0.25 0.5 1.0 1.25 1.5 1.75 2.0 2.5 3.0 4.0 5.0 7.5 10.0]
-#define CLOUD_SPEED 1.0 // [0.0 0.025 0.25 0.5 1.0 1.25 1.5 1.75 2.0 2.5 3.0 4.0 5.0 7.5 10.0]
+#define CLOUD_SPEED 1.0 // [0.0 0.025 0.25 0.5 1.0 1.25 1.5 1.75 2.0 2.5 3.0 4.0 5.0 7.5 10.0 12.0 15.0 20.0]
 
 #define ANIMATION_SPEED_AMOUNT 0.75 // [0.0 0.025 0.25 0.5 0.75 1.0 1.25 1.5 2.0 3.0]
 
@@ -1691,7 +1691,7 @@ vec4 CloudColor(in vec4 worldPosition, in float sunglow, in vec3 worldLightVecto
 
 
 
-	float t = frameTimeCounter * 0.5f * ANIMATION_SPEED_AMOUNT;
+	float t = frameTimeCounter * 0.5f * ANIMATION_SPEED_AMOUNT * CLOUD_SPEED;
 		  t *= 0.5;
 
 
@@ -1801,7 +1801,7 @@ vec4 CloudColor2(in vec4 worldPosition, in float sunglow, in vec3 worldLightVect
 	vec3 p = worldPosition.xyz / 130.0f;
 
 
-	float t = frameTimeCounter * 0.5f * ANIMATION_SPEED_AMOUNT;
+	float t = frameTimeCounter * 0.5f * ANIMATION_SPEED_AMOUNT * CLOUD_SPEED;
 		  t *= 0.05;
 		  //t *= 0.00;
 

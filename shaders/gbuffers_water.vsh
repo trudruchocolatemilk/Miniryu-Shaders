@@ -11,6 +11,8 @@ uniform vec3 cameraPosition;
 uniform mat4 gbufferModelView;
 uniform mat4 gbufferModelViewInverse;
 
+uniform float frameTimeCounter;
+
 varying vec4 color;
 varying vec4 texcoord;
 varying vec4 lmcoord;

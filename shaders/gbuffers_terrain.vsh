@@ -809,12 +809,12 @@ position.xyz += cameraPosition.xyz;
 
 	position.xyz -= cameraPosition.xyz;
 
-shadowPosition = position;
+	shadowPosition = position;
 
 
-#ifdef ACID
-  position.xyz = Acid(position.xyz);
-#endif
+	#ifdef ACID
+  		position.xyz = Acid(position.xyz);
+	#endif
 
 
 
