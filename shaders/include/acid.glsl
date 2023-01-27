@@ -76,8 +76,9 @@ vec3 Acid(vec3 pos)
 	}
 	#elif DEFORMATION == 4
 	{
-		
-		
+		om = intensity * sin(Distance * sin((speed * time) * speed / 16) / 1500);
+
+		rotate(pos.zy, pos.x * (om / (10 / ACID_INTESITY)));
 	}
 	#endif
 	
